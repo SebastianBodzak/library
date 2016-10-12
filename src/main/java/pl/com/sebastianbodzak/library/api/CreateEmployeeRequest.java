@@ -10,9 +10,10 @@ public class CreateEmployeeRequest {
 
     private PersonalDataDto personalData;
     private String jobTitle;
+    private Long id;
 
     public void validate() {
-        if (personalData == null || jobTitle == null)
+        if (personalData == null || jobTitle == null || id == null)
             throw new InvalidRequestException("Personal data and job title are required");
         validateProfession();
         personalData.validate();
@@ -65,5 +66,13 @@ public class CreateEmployeeRequest {
 
     public String getPostalCode() {
         return personalData.getAddress().getPostalCode();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -19,12 +19,12 @@ public class AdminPanel {
     }
 
     @Transactional
-    public CreateEmployeeResponse createEmployee(CreateEmployeeRequest employeeRequest, Long adminId) {
-        employeeRequest.validate();
-        Employee registeredBy = employeeRepository.findByEmployeeId(adminId);
+    public CreateEmployeeResponse createEmployee(CreateEmployeeRequest request) {
+        request.validate();
+        Employee registeredBy = employeeRepository.findByEmployeeId(request.getId());
         if (registeredBy == null)
-            throw new InvalidRequestException("Wrong adminId");
-        Employee employee = employeeFactory.createEmployee(employeeRequest, registeredBy);
+            throw new InvalidRequestException("Wrong id");
+        Employee employee = employeeFactory.createEmployee(request, registeredBy);
         employeeRepository.save(employee);
         return new CreateEmployeeResponse(employee.getId());
     }

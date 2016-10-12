@@ -20,6 +20,7 @@ public class AdminController {
 
     @PutMapping
     public CreateEmployeeResponse addEmployee(@PathVariable Long adminId, @RequestBody CreateEmployeeRequest employeeRequest) {
-        return adminPanel.createEmployee(employeeRequest, adminId);
+        employeeRequest.setId(adminId);
+        return adminPanel.createEmployee(employeeRequest);
     }
 }
