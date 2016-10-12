@@ -8,14 +8,10 @@ import javax.persistence.*;
 @Entity
 public class User {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @EmbeddedId
+    private Account accountNumber;
 
-//    @EmbeddedId
-//    private Account accountNumber;
-
-    @Embedded
+    @OneToOne
     private PersonalData data;
 
     @Enumerated(EnumType.STRING)
@@ -24,14 +20,10 @@ public class User {
     private User() {}
 
     public User(Account accountNumber, PersonalData data, UserStatus userStatus) {
-//        this.accountNumber = accountNumber;
+        this.accountNumber = accountNumber;
         this.data = data;
         this.userStatus = userStatus;
     }
-
-//    public Account getAccountNumber() {
-//        return accountNumber;
-//    }
 
     public PersonalData getData() {
         return data;
@@ -39,5 +31,9 @@ public class User {
 
     public UserStatus getUserStatus() {
         return userStatus;
+    }
+
+    public Account getAccountNumber() {
+        return accountNumber;
     }
 }

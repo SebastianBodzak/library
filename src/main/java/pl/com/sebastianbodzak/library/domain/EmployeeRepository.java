@@ -3,8 +3,10 @@ package pl.com.sebastianbodzak.library.domain;
 /**
  * Created by Dell on 2016-10-11.
  */
-public interface WorkerRepository {
+public interface EmployeeRepository {
 
-    void save(Worker worker);
+    void save(Employee employee);
     boolean isLoginOccupied(String login);
+
+    Employee findByEmployeeId(Long employeeId);
 }

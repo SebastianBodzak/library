@@ -15,7 +15,7 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME
  * Created by Dell on 2016-10-11.
  */
 @Entity
-public class Order {
+public class BooksOrder {
 
     @Id
     @GeneratedValue
@@ -36,9 +36,9 @@ public class Order {
     @DateTimeFormat(iso = DATE_TIME)
     private LocalDateTime realizedAt;
 
-    private Order() {}
+    private BooksOrder() {}
 
-    public Order(User user, Set<Book> books, LocalDateTime orderedAt, OrderStatus orderStatus, LocalDateTime realizedAt) {
+    public BooksOrder(User user, Set<Book> books, LocalDateTime orderedAt, OrderStatus orderStatus, LocalDateTime realizedAt) {
         this.user = user;
         this.books = books;
         this.orderedAt = orderedAt;

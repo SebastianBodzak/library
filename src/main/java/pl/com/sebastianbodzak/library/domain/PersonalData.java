@@ -1,13 +1,19 @@
 package pl.com.sebastianbodzak.library.domain;
 
-import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by Dell on 2016-10-11.
  */
-@Embeddable
+@Entity
 public class PersonalData {
+
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private String firstName;
     private String lastName;
