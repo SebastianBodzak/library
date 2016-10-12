@@ -48,7 +48,7 @@ public class Employee {
         this.registeredAt = LocalDateTime.now();
     }
 
-    public void registerEmployee(String login, String hashedPassword) {
+    public void register(String login, String hashedPassword) {
         checkState(!isRegistered());
 
         this.login = login;
@@ -76,5 +76,17 @@ public class Employee {
 
         this.login = login;
         this.hashedPassword = password;
+    }
+
+    public PersonalData getData() {
+        return data;
+    }
+
+    public Employee getRegisterBy() {
+        return registerBy;
+    }
+
+    public LocalDateTime getRegisteredAt() {
+        return registeredAt;
     }
 }

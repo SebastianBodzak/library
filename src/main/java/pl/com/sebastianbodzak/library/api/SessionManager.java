@@ -40,7 +40,7 @@ public class SessionManager {
         else if (employee.isRegistered())
             return failure("Employee identified by this id has already registered");
         else {
-            employee.registerEmployee(login, password);
+            employee.register(login, password);
             return success();
         }
     }
