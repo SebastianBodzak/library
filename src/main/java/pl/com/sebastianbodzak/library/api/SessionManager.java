@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.com.sebastianbodzak.library.domain.Employee;
 import pl.com.sebastianbodzak.library.domain.EmployeeRepository;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.gson.internal.$Gson$Preconditions.checkNotNull;
 
 /**
  * Created by Dell on 2016-10-11.
@@ -14,31 +14,42 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class SessionManager {
 
     private EmployeeRepository employeeRepository;
+    private PasswordHasher passwordHasher;
 
-    public SessionManager(EmployeeRepository employeeRepository) {
+    public SessionManager(EmployeeRepository employeeRepository, PasswordHasher passwordHasher) {
         this.employeeRepository = employeeRepository;
+        this.passwordHasher = passwordHasher;
     }
 
     @Transactional
-    public SignupResultDto employeeSignup(String login, String password, Long employeeId) {
-        checkArgument(!(login == null || password == null || employeeId == null));
-        Employee employee = employeeRepository.findByEmployeeId(employeeId);
+    public SignupResultDto signupByEmployee(SignupRequest request) {
+        checkNotNull(request);
+
+        request.validate();
+        Employee employee = employeeRepository.findByEmployeeId(request.getEmployeeId());
+        String hashedPassword = passwordHasher.hashPassword(request.getPassword());
         if (employee == null)
-            return setupNewAccount(login, password, employeeId);
+            throw new InvalidRequestException("Employee identified by this id does not exist");
         else
-            return failure("Employee has already registered");
+            return setupNewAccount(request.getLogin(), hashedPassword, employee);
+    }
+
+    private SignupResultDto setupNewAccount(String login, String password, Employee employee) {
+        if (employeeRepository.isLoginOccupied(login))
+            return failure("Login is occupied");
+        else if (employee.isRegistered())
+            return failure("Employee identified by this id has already registered");
+        else {
+            employee.registerEmployee(login, password);
+            return success();
+        }
     }
 
     private SignupResultDto failure(String failureMessage) {
         return new SignupResultDto(failureMessage);
     }
 
-    private SignupResultDto setupNewAccount(String login, String password, Long employeeId) {
-        if (employeeRepository.isLoginOccupied(login))
-            return failure("Login is occupied");
-        else
-//            employeeRepository.save(new Employee(login, password, employeeId));
-
-        return null;
+    private SignupResultDto success() {
+        return new SignupResultDto();
     }
 }

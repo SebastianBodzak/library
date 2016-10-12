@@ -23,7 +23,9 @@ public class JPAEmployeeRepository implements EmployeeRepository {
 
     @Override
     public boolean isLoginOccupied(String login) {
-        return false;
+        return entityManager.createNamedQuery("Employee.isLoginOccupied", Long.class).
+                setParameter("login", login).
+                getSingleResult() > 0;
     }
 
     @Override

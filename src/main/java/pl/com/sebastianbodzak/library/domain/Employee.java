@@ -13,6 +13,9 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME
  * Created by Dell on 2016-10-11.
  */
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Employee.isLoginOccupied", query = "SELECT count(e) FROM Employee e WHERE login =:login")
+})
 public class Employee {
 
     @Id
@@ -25,7 +28,7 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private JobTitle jobTitle;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     private String login;
 
     private String hashedPassword;
@@ -46,6 +49,8 @@ public class Employee {
     }
 
     public void registerEmployee(String login, String hashedPassword) {
+        checkState(!isRegistered());
+
         this.login = login;
         this.hashedPassword = hashedPassword;
     }
@@ -68,6 +73,7 @@ public class Employee {
 
     public void setupAccount(String login, String password) {
         checkState(!isRegistered());
+
         this.login = login;
         this.hashedPassword = password;
     }
