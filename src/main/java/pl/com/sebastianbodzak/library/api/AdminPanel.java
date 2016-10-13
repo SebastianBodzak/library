@@ -28,4 +28,12 @@ public class AdminPanel {
         employeeRepository.save(employee);
         return new CreateEmployeeResponse(employee.getId());
     }
+
+    public void changeEmailMessage() {
+
+    }
+
+    public void showListOfMessage() {
+
+    }
 }

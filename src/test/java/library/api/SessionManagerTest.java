@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import pl.com.sebastianbodzak.library.api.EmailSender;
 import pl.com.sebastianbodzak.library.api.PasswordHasher;
 import pl.com.sebastianbodzak.library.api.SessionManager;
 import pl.com.sebastianbodzak.library.api.SignupRequest;
@@ -38,11 +39,14 @@ public class SessionManagerTest {
     private String hashedPassword = "hashedPassword";
 
     @Mock
+    private EmailSender emailSender;
+
+    @Mock
     private Employee employee;
 
     @Before
     public void setUp() {
-        sessionManager = new SessionManager(employeeRepository, passwordHasher);
+        sessionManager = new SessionManager(employeeRepository, passwordHasher, emailSender);
     }
 
     @Test

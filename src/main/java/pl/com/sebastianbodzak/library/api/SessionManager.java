@@ -15,10 +15,12 @@ public class SessionManager {
 
     private EmployeeRepository employeeRepository;
     private PasswordHasher passwordHasher;
+    private EmailSender emailSender;
 
-    public SessionManager(EmployeeRepository employeeRepository, PasswordHasher passwordHasher) {
+    public SessionManager(EmployeeRepository employeeRepository, PasswordHasher passwordHasher, EmailSender emailSender) {
         this.employeeRepository = employeeRepository;
         this.passwordHasher = passwordHasher;
+        this.emailSender = emailSender;
     }
 
     @Transactional
@@ -41,6 +43,7 @@ public class SessionManager {
             return failure("Employee identified by this id has already registered");
         else {
             employee.register(login, password);
+            emailSender.sendEmail(employee.getData().getEmail(), "CONFIRM_EMPLOYEE_REGISTRATION");
             return success();
         }
     }
