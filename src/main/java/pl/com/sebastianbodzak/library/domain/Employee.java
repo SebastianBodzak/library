@@ -60,8 +60,11 @@ public class Employee {
         return id;
     }
 
-    public JobTitle getJobTitle() {
-        return jobTitle;
+    public boolean checkIfhas(JobTitle ...jobTitle) {
+        for (JobTitle title : jobTitle)
+            if (this.jobTitle.equals(title))
+                return true;
+        return false;
     }
 
     public String getLogin() {

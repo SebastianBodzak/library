@@ -8,6 +8,9 @@ import pl.com.sebastianbodzak.library.api.responses.CreateEmployeeResponse;
 import pl.com.sebastianbodzak.library.api.responses.ListOfMessagesResponse;
 import pl.com.sebastianbodzak.library.domain.*;
 
+import static pl.com.sebastianbodzak.library.domain.JobTitle.ADMIN;
+import static pl.com.sebastianbodzak.library.domain.JobTitle.MANAGER;
+
 /**
  * Created by Dell on 2016-10-11.
  */
@@ -25,6 +28,7 @@ public class AdminPanel {
     }
 
     @Transactional
+    @RequiresAuth(roles = {ADMIN, MANAGER})
     public CreateEmployeeResponse createEmployee(CreateEmployeeRequest request) {
         request.validate();
         Employee registeredBy = employeeRepository.findByEmployeeId(request.getId());
@@ -41,6 +45,7 @@ public class AdminPanel {
     }
 
     @Transactional
+    @RequiresAuth(roles = {ADMIN, MANAGER})
     public ListOfMessagesResponse showListOfMessage(Long adminId) {
         return messagesCatalog.listAll();
     }

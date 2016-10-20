@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import pl.com.sebastianbodzak.library.api.AuthRequiredException;
 import pl.com.sebastianbodzak.library.api.InvalidRequestException;
 
 /**
@@ -22,5 +23,15 @@ public class ErrorHandler {
                 headers,
                 HttpStatus.UNPROCESSABLE_ENTITY
         );
+    }
+
+    @ExceptionHandler(AuthRequiredException.class)
+    public ResponseEntity<String> handlerAuthRequiredException() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set(HttpHeaders.CONTENT_TYPE, "application/json");
+        return new ResponseEntity<String>(
+                "{'error': 'authentication required'}",
+                headers,
+                HttpStatus.UNAUTHORIZED);
     }
 }
