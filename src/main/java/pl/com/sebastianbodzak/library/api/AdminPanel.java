@@ -2,6 +2,10 @@ package pl.com.sebastianbodzak.library.api;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.com.sebastianbodzak.library.api.requests.ChangeEmailMessageRequest;
+import pl.com.sebastianbodzak.library.api.requests.CreateEmployeeRequest;
+import pl.com.sebastianbodzak.library.api.responses.CreateEmployeeResponse;
+import pl.com.sebastianbodzak.library.api.responses.ListOfMessagesResponse;
 import pl.com.sebastianbodzak.library.domain.*;
 
 /**

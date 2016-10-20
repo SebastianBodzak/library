@@ -1,4 +1,4 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.responses;
 
 /**
  * Created by Dell on 2016-10-12.

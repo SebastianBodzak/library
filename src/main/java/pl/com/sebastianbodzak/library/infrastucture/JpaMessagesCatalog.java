@@ -1,8 +1,8 @@
 package pl.com.sebastianbodzak.library.infrastucture;
 
 import org.springframework.stereotype.Component;
-import pl.com.sebastianbodzak.library.api.ListOfMessagesResponse;
-import pl.com.sebastianbodzak.library.api.EmailMessageDto;
+import pl.com.sebastianbodzak.library.api.responses.ListOfMessagesResponse;
+import pl.com.sebastianbodzak.library.api.dtos.EmailMessageDto;
 import pl.com.sebastianbodzak.library.api.MessagesCatalog;
 import pl.com.sebastianbodzak.library.domain.EmailMessage;
 import pl.com.sebastianbodzak.library.domain.EmailMessage_;

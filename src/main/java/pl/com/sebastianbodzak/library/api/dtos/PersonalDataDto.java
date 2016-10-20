@@ -1,4 +1,9 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.dtos;
+
+import pl.com.sebastianbodzak.library.api.EmailValidator;
+import pl.com.sebastianbodzak.library.api.InvalidRequestException;
+import pl.com.sebastianbodzak.library.api.PhoneValidator;
+import pl.com.sebastianbodzak.library.api.dtos.AddressDto;
 
 /**
  * Created by Dell on 2016-10-11.

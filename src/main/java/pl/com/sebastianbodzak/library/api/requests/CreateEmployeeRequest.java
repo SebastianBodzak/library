@@ -1,6 +1,8 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.requests;
 
 import org.apache.commons.lang3.EnumUtils;
+import pl.com.sebastianbodzak.library.api.InvalidRequestException;
+import pl.com.sebastianbodzak.library.api.dtos.PersonalDataDto;
 import pl.com.sebastianbodzak.library.domain.JobTitle;
 
 /**

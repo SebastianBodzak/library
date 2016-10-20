@@ -8,7 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pl.com.sebastianbodzak.library.api.EmailSender;
 import pl.com.sebastianbodzak.library.api.PasswordHasher;
 import pl.com.sebastianbodzak.library.api.SessionManager;
-import pl.com.sebastianbodzak.library.api.SignupRequest;
+import pl.com.sebastianbodzak.library.api.requests.SignupRequest;
 import pl.com.sebastianbodzak.library.domain.Employee;
 import pl.com.sebastianbodzak.library.domain.EmployeeRepository;
 

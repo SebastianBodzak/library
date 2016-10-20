@@ -1,4 +1,6 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.responses;
+
+import pl.com.sebastianbodzak.library.api.dtos.EmailMessageDto;
 
 import java.util.List;
 

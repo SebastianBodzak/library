@@ -1,6 +1,7 @@
 package pl.com.sebastianbodzak.library.api;
 
 import org.springframework.stereotype.Component;
+import pl.com.sebastianbodzak.library.api.requests.CreateEmployeeRequest;
 import pl.com.sebastianbodzak.library.domain.Address;
 import pl.com.sebastianbodzak.library.domain.Employee;
 import pl.com.sebastianbodzak.library.domain.PersonalData;

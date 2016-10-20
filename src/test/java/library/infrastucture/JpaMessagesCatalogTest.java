@@ -8,7 +8,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import pl.com.sebastianbodzak.library.api.ListOfMessagesResponse;
+import pl.com.sebastianbodzak.library.api.responses.ListOfMessagesResponse;
 import pl.com.sebastianbodzak.library.api.MessagesCatalog;
 
 import static junit.framework.Assert.assertEquals;

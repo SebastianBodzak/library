@@ -1,4 +1,4 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.dtos;
 
 /**
  * Created by Dell on 2016-10-11.

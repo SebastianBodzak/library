@@ -1,10 +1,10 @@
 package pl.com.sebastianbodzak.library.ui;
 
 import org.springframework.web.bind.annotation.*;
-import pl.com.sebastianbodzak.library.api.CreateEmployeeRequest;
+import pl.com.sebastianbodzak.library.api.requests.CreateEmployeeRequest;
 import pl.com.sebastianbodzak.library.api.AdminPanel;
-import pl.com.sebastianbodzak.library.api.CreateEmployeeResponse;
-import pl.com.sebastianbodzak.library.api.ListOfMessagesResponse;
+import pl.com.sebastianbodzak.library.api.responses.CreateEmployeeResponse;
+import pl.com.sebastianbodzak.library.api.responses.ListOfMessagesResponse;
 
 /**
  * Created by Dell on 2016-10-11.

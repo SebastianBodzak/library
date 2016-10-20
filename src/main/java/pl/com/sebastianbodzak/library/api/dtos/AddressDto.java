@@ -1,4 +1,6 @@
-package pl.com.sebastianbodzak.library.api;
+package pl.com.sebastianbodzak.library.api.dtos;
+
+import pl.com.sebastianbodzak.library.api.InvalidRequestException;
 
 /**
  * Created by Dell on 2016-10-12.
