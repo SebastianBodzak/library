@@ -14,7 +14,8 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME
  */
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Employee.isLoginOccupied", query = "SELECT count(e) FROM Employee e WHERE login =:login")
+        @NamedQuery(name = "Employee.isLoginOccupied", query = "SELECT count(e) FROM Employee e WHERE login =:login"),
+        @NamedQuery(name = "Employee.findByLoginAndPassword", query = "FROM Employee WHERE login =:login AND hashedPassword =:hP")
 })
 public class Employee {
 

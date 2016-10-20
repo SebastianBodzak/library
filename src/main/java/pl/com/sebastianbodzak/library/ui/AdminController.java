@@ -1,6 +1,7 @@
 package pl.com.sebastianbodzak.library.ui;
 
 import org.springframework.web.bind.annotation.*;
+import pl.com.sebastianbodzak.library.api.requests.ChangeEmailMessageRequest;
 import pl.com.sebastianbodzak.library.api.requests.CreateEmployeeRequest;
 import pl.com.sebastianbodzak.library.api.AdminPanel;
 import pl.com.sebastianbodzak.library.api.responses.CreateEmployeeResponse;
@@ -26,7 +27,12 @@ public class AdminController {
     }
 
     @GetMapping("/messages")
-    public ListOfMessagesResponse listAll() {
-        return adminPanel.showListOfMessage();
+    public ListOfMessagesResponse listAll(@PathVariable Long adminId) {
+        return adminPanel.showListOfMessage(adminId);
+    }
+
+    @PutMapping("/changemessage")
+    public void changeEmailMessage(@RequestBody ChangeEmailMessageRequest request) {
+        adminPanel.changeEmailMessage(request);
     }
 }

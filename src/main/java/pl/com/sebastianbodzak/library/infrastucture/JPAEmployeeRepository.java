@@ -6,6 +6,7 @@ import pl.com.sebastianbodzak.library.domain.EmployeeRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 /**
  * Created by Dell on 2016-10-11.
@@ -31,5 +32,13 @@ public class JpaEmployeeRepository implements EmployeeRepository {
     @Override
     public Employee findByEmployeeId(Long employeeId) {
         return entityManager.find(Employee.class, employeeId);
+    }
+
+    @Override
+    public Employee findByLoginAndPassword(String login, String hashedPassword) {
+        List<Employee> employees = entityManager.createNamedQuery("Employee.findByLoginAndPassword", Employee.class).
+                setParameter("login", login).setParameter("hP", hashedPassword).getResultList();
+
+        return Utils.returnSingleResult(employees);
     }
 }

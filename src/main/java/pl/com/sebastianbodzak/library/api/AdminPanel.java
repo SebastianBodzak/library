@@ -41,7 +41,7 @@ public class AdminPanel {
     }
 
     @Transactional
-    public ListOfMessagesResponse showListOfMessage() {
+    public ListOfMessagesResponse showListOfMessage(Long adminId) {
         return messagesCatalog.listAll();
     }
 }
