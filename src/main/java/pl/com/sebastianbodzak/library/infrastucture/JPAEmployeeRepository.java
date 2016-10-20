@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * Created by Dell on 2016-10-11.
  */
 @Repository
-public class JPAEmployeeRepository implements EmployeeRepository {
+public class JpaEmployeeRepository implements EmployeeRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

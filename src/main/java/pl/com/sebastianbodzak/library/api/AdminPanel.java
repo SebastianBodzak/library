@@ -12,10 +12,12 @@ public class AdminPanel {
 
     private EmployeeRepository employeeRepository;
     private EmployeeFactory employeeFactory;
+    private MessagesCatalog messagesCatalog;
 
-    public AdminPanel(EmployeeRepository employeeRepository, EmployeeFactory employeeFactory) {
+    public AdminPanel(EmployeeRepository employeeRepository, EmployeeFactory employeeFactory, MessagesCatalog messagesCatalog) {
         this.employeeRepository = employeeRepository;
         this.employeeFactory = employeeFactory;
+        this.messagesCatalog = messagesCatalog;
     }
 
     @Transactional
@@ -29,11 +31,13 @@ public class AdminPanel {
         return new CreateEmployeeResponse(employee.getId());
     }
 
-    public void changeEmailMessage() {
+    @Transactional
+    public void changeEmailMessage(ChangeEmailMessageRequest request) {
 
     }
 
-    public void showListOfMessage() {
-
+    @Transactional
+    public ListOfMessagesResponse showListOfMessage() {
+        return messagesCatalog.listAll();
     }
 }

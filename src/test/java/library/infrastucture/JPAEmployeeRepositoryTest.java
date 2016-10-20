@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 @TestPropertySource({"/jdbc-test.properties", "/hibernate-test.properties"})
 @WebAppConfiguration
 @Sql("/fixtures/employees.sql")
-public class JPAEmployeeRepositoryTest {
+public class JpaEmployeeRepositoryTest {
 
     private String occupiedLogin = "login";
     private String freeLogin = "freeLogin";

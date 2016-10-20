@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
  * Created by Dell on 2016-10-13.
  */
 @Repository
-public class JPAEmailMessageRepository implements EmailMessageRepository {
+public class JpaEmailMessageRepository implements EmailMessageRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
