@@ -1,6 +1,8 @@
 package pl.com.sebastianbodzak.library.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static pl.com.sebastianbodzak.library.domain.BookStatus.AVAILABLE;
@@ -14,25 +16,26 @@ public class Book {
     @Id
     @GeneratedValue
     private Long id;
-
     private String title;
-    private String author;
+    @ElementCollection
+    private List<String> authors = new ArrayList<>();
     private String signature;
     @Enumerated(EnumType.STRING)
     private BookStatus status;
     @ElementCollection
     private Set<String> keyWords;
-    private int bookAmount;
+    @OneToOne
+    private Employee addBy;
 
     private Book() {}
 
-    public Book(String title, String author, String signature, BookStatus status, Set<String> keyWords, int bookAmount) {
+    public Book(String title, List<String> authors, String signature, Set<String> keyWords, Employee addBy) {
         this.title = title;
-        this.author = author;
+        this.authors = authors;
         this.signature = signature;
-        this.status = status;
+        this.status = AVAILABLE;
         this.keyWords = keyWords;
-        this.bookAmount = bookAmount;
+        this.addBy = addBy;
     }
 
     public void addBook(Book book) {
@@ -43,8 +46,8 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
-        return author;
+    public List<String> getAuthors() {
+        return authors;
     }
 
     public String getSignature() {
@@ -59,7 +62,4 @@ public class Book {
         return keyWords;
     }
 
-    public int getBookAmount() {
-        return bookAmount;
-    }
 }
