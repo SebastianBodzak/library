@@ -11,6 +11,12 @@ public class SignupRequest {
     private String password;
     private Long employeeId;
 
+    public SignupRequest(String login, String password, Long employeeId) {
+        this.login = login;
+        this.password = password;
+        this.employeeId = employeeId;
+    }
+
     public void validate() {
         if (login == null || login.trim().isEmpty())
             throw new InvalidRequestException("Login can not be empty");

@@ -5,5 +5,7 @@ package pl.com.sebastianbodzak.library.domain;
  */
 public interface EmailMessageRepository {
 
+    void save(EmailMessage emailMessage);
+
     EmailMessage loadMessageById(String typeOfMessage);
 }
